@@ -29,7 +29,14 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+        "scripts": [
+  "node_modules/jquery/dist/jquery.min.js",
+  "node_modules/slick-carousel/slick/slick.min.js",
+  "node_modules/animsition/dist/js/animsition.min.js",
+  "node_modules/isotope-layout/dist/isotope.pkgd.min.js",
+  "node_modules/imagesloaded/imagesloaded.pkgd.min.js"
+]
+
           },
           "configurations": {
             "production": {
@@ -87,8 +94,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
-          }
+"scripts": [
+
+]          }
         }
       }
     }
