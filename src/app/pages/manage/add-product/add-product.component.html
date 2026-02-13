@@ -1,0 +1,31 @@
+<form (ngSubmit)="onSubmit()" #productForm="ngForm" novalidate>
+
+  <label>Product Name</label>
+  <input type="text" name="name" [(ngModel)]="product.name" required #name="ngModel" />
+  <div *ngIf="name.invalid && name.touched" style="color:red">Name is required.</div>
+
+  <label>Price</label>
+  <input type="number" name="price" [(ngModel)]="product.price" required #price="ngModel" min="0" step="0.01" />
+  <div *ngIf="price.invalid && price.touched" style="color:red">Valid price is required.</div>
+
+  <label>Description</label>
+  <textarea name="description" [(ngModel)]="product.description" required #description="ngModel"></textarea>
+  <div *ngIf="description.invalid && description.touched" style="color:red">Description is required.</div>
+
+  <label>Colors</label>
+  <input type="text" name="colors" [(ngModel)]="product.colors" />
+
+  <label>Category</label>
+  <input type="text" name="category" [(ngModel)]="product.category" />
+
+  <label>Material</label>
+  <input type="text" name="material" [(ngModel)]="product.material" />
+
+  <label>Stock</label>
+  <input type="number" name="stock" [(ngModel)]="product.stock" min="0" />
+
+  <label>Image URL</label>
+  <input type="url" name="img" [(ngModel)]="product.img" />
+
+  <button type="submit" [disabled]="productForm.invalid">Add Product</button>
+</form>

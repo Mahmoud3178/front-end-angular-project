@@ -1,0 +1,26 @@
+.sidebar {
+  background-color: #343a40;
+  height: 100vh;
+  padding-top: 30px;
+}
+
+.sidebar a {
+  color: #ccc;
+  text-decoration: none;
+  padding: 12px 20px;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #495057;
+  color: white;
+}
+
+.wishlist-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}

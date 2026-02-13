@@ -1,0 +1,38 @@
+<div class="checkout-container p-5">
+  <h2 class="mb-3">Checkout</h2>
+  <p><strong>Date:</strong> {{ currentDate }}</p>
+
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Product</th>
+          <th>Color</th>
+          <th>Size</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>{{ item.productName }}</td>
+          <td>{{ item.color || '-' }}</td>
+          <td>{{ item.size || '-' }}</td>
+          <td>{{ item.quantity }}</td>
+<td>\${{ item.price !== undefined ? item.price.toFixed(2) : 'N/A' }}</td>
+<td>\${{ item.price !== undefined ? (item.price * item.quantity).toFixed(2) : 'N/A' }}</td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="mt-4 text-end">Total: ${{ total.toFixed(2) }}</h3>
+
+  <div class="text-end mt-3">
+    <button class="btn btn-primary" disabled>
+      Place Order (Coming Soon)
+    </button>
+  </div>
+</div>

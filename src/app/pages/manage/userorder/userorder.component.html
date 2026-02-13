@@ -1,0 +1,19 @@
+<h3 class="mb-4">Orders List</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>User ID</th>
+      <th>Items Count</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ order.customerId }}</td>
+      <td>{{ order.items?.length || 0 }}</td>
+      <td>{{ order.createAt | date:'short' }}</td>
+    </tr>
+  </tbody>
+</table>

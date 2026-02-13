@@ -1,0 +1,101 @@
+<!-- src/app/pages/manage/userproduct/userproduct.component.html -->
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 sidebar d-none d-md-block">
+      <a routerLink="/manage/dashboard">Admin Dashboard</a>
+      <a routerLink="/manage/wishlist">Users</a>
+      <a routerLink="/manage/orders">Orders</a>
+      <a class="active" href="#">Products</a>
+      <a routerLink="/manage/settings">Settings</a>
+      <a (click)="logout()" href="#">Logout</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="col-md-9 p-4">
+      <h3 class="mb-4">Products</h3>
+
+      <!-- Product Form -->
+      <form [formGroup]="productForm" (ngSubmit)="submit()" class="row g-3 mb-4">
+        <div class="col-md-6">
+          <label class="form-label">Name</label>
+          <input type="text" formControlName="name" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Price</label>
+          <input type="number" formControlName="price" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Colors</label>
+          <input type="text" formControlName="colors" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+  <label class="form-label">Category</label>
+  <select class="form-select" formControlName="categoryId" required>
+    <option *ngFor="let category of categoryOptions" [ngValue]="category.id">
+      {{ category.name }}
+    </option>
+  </select>
+</div>
+
+        <div class="col-md-6">
+          <label class="form-label">Material</label>
+          <input type="text" formControlName="material" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Image URL</label>
+          <input type="text" formControlName="imgURL" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">In Stock</label>
+          <select class="form-select" formControlName="inStock">
+            <option [ngValue]="true">Yes</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Description</label>
+          <textarea formControlName="description" rows="2" class="form-control" required></textarea>
+        </div>
+
+        <div class="col-12 text-end">
+          <button type="submit" class="btn btn-success">
+            {{ isEditMode ? 'Save Changes' : 'Add Product' }}
+          </button>
+          <button type="button" class="btn btn-secondary ms-2" *ngIf="isEditMode" (click)="cancelEdit()">Cancel</button>
+        </div>
+      </form>
+
+      <!-- Products Table -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>In Stock</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of products; index as i">
+              <td>{{ i + 1 }}</td>
+              <td><img [src]="p.imgURL" width="50" /></td>
+              <td>{{ p.name }}</td>
+              <td>{{ p.description }}</td>
+              <td>${{ p.price }}</td>
+              <td>{{ p.inStock ? 'Yes' : 'No' }}</td>
+              <td>
+                <button class="btn btn-sm btn-secondary" (click)="edit(p)">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="delete(p.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
